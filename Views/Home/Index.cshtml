@@ -1,0 +1,63 @@
+﻿@model IndexViewModel
+
+@{ 
+    ViewBag.Title = "Zaczytani - polecane książki";
+    ViewBag.Description = "Blog o polecanych książkach – na poważnie i żartem, ale zawsze profesjonalnie. Odkryj Twoje nowe ulubione ksiażki.";
+    ViewBag.Keywords = "Blog książki polecane kryminały biografie";
+    var base_path = Context.Request.PathBase;
+}
+@*@<h2>Home Page</h2>
+<img src="~/content/static/huawei-matebook-14s.jpg" width="500" />*@
+
+<div class="maing-img" alt="książki na regale">
+    <H1 class="title_main">Zaczytani - polecane książki:</H1>
+    <form asp-controller="Home" asp-action="Index" method="get">
+        <input type="hidden" name="pageNumber" value="@Model.PageNumber" />
+        <input type="hidden" name="category" value="@Model.Category" />
+        <input class="search" type="text" name="search" placeholder="Wyszukaj na stronie" value="@Model.Search" />
+        <button class="submit-btn">Wyszukaj</button>
+    </form>
+</div>
+
+<div class="container">
+    @*@<ul>
+            @foreach (var post in Model)
+            {
+                <li>
+                    <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
+                        @post.Title
+                    </a>
+                </li>
+            }
+        </ul>*@
+    <h2>Najnowsze recenzje</h2>
+    <p>Twój styl życia z książką</p>
+    @foreach (var post in Model.Posts.OrderByDescending(i => i.Created)) 
+    {
+        var image_path = $"{base_path}/Image/{post.Image}";
+<div class="main-post">
+    <a class="post" asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
+        @*<a class="post" asp-route="@post.Linczek">*@
+        <img src="@image_path" alt="@post.Title"/>
+        <div class="maing_page_listing">
+            <H3 class="title_main_page">
+                @post.Title
+            </H3>
+            <p class="main_page_published">
+                @post.Created.ToString("dd/MM/yyyy")
+            </p>
+        </div>
+        <p class="maing_page_category">
+            @post.Category
+        </p>
+
+    </a>
+</div>
+            }
+
+
+            <partial name="_BlogPagination" model="Model" />
+
+
+
+        </div>

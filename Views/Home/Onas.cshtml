@@ -1,0 +1,61 @@
+﻿@{ 
+    ViewBag.Title = "O redakcji zaczytanych";
+    ViewBag.Description = "Poznaj redakcję zaczytanych. Dowiedz się więcej kim są zaczytani.";
+    ViewBag.Keywords = "Blog książki polecane kryminały biografie";
+}
+<div class="container">
+    <div class="special-body">
+        <span class="path"><a href="https://zaczytani.com.pl" class="path-url">Zaczytani</a> >> O nas</span>
+        <h1>@ViewBag.Title</h1>
+        <p>
+            Cześć,
+            <br /> <br />
+            przed Tobą zaCzytani. To projekt o ludziach czytających, ale też o tym co czytali, czytają i będą czytać.
+            <br />
+            Zaczytani to recenzje książek, która są skupione na tym co w nich lubimy. Chcę pokazać dlaczego ludzie sięgają po książki i co w nich odnajdują. Począwszy od ulubionych bohaterów, historii, tego co wnoszą w życie i jakie wzbudzają emocje. Wspólnie stworzymy regał pełen dobrych książek.
+            Może statystyki nie są sprzyjające, ale każdy czytający ma swój wirtualny świat, taką książkową rzeczywistość. Dlaczego więc nie dzielić się tym z innymi? Niech będzie nas więcej. Właśnie po to są zaczytani.
+            <br />W zaczytanych cenimy zarówno weteranów literatury, jak i tych którzy swoją przygodę z książkami dopiero zaczynają. Przypomnijmy sobie ulubione książki z młodych lat, sprawdźmy co obecnie jest na topie i wspólnie rozwińmy swoje horyzonty.
+            <br /><br />Dobrej książki!
+            <br /><br />
+            Strona stanowi element projektu zaliczeniowego pracę inżynierską.
+            <br /><br />
+            Jeśli chcesz skontaktować się z nami, <a href="https://zaczytani.com.pl/Home/Kontakt">odwiedź tę stronę</a>.
+        </p>
+    </div>
+
+</div>
+
+
+<script type="application/ld+json">
+    {
+    "@@context": "https://schema.org/",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [{
+    "@@type": "ListItem",
+    "position": 1,
+    "name": "Strona główna",
+    "item": "https://zaczytani.com.pl/"
+    },{
+    "@@type": "ListItem",
+    "position": 2,
+    "name": "O redakcji zaczytanych",
+    "item": "https://zaczytani.com.pl/Home/Onas"
+    }]
+    }
+
+    {
+    "@@context": "https://schema.org/",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [{
+    "@@type": "ListItem",
+    "position": 1,
+    "name": "Strona główna zaczytani.com.pl",
+    "item": "https://zaczytani.com.pl/"
+    },{
+    "@@type": "ListItem",
+    "position": 2,
+    "name": "@ViewBag.Title",
+    "item": "https://zaczytani.com.pl/Home/Onas"
+    }]
+    }
+</script>

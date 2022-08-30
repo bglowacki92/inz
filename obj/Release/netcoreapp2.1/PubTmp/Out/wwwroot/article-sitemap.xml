@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+	<url>
+		<loc>https://zaczytani.com.pl/Home/Post/3</loc>
+		<news:news>
+			<news:publication>
+				<news:name>Zaczytani</news:name>
+				<news:language>pl</news:language>
+			</news:publication>
+			<news:publication_date>2022-08-21T19:51:03+00:00</news:publication_date>
+			<news:title><![CDATA[Polecane kryminały i thrillery na wakacje 2022]]></news:title>
+		</news:news>
+	</url>
+	<url>
+		<loc>https://zaczytani.com.pl/Home/Post/2</loc>
+		<news:news>
+			<news:publication>
+				<news:name>Zaczytani</news:name>
+				<news:language>pl</news:language>
+			</news:publication>
+			<news:publication_date>2022-08-21T19:31:13+00:00</news:publication_date>
+			<news:title><![CDATA[Recenzja książki Projekt Riese Remigiusza Mroza]]></news:title>
+		</news:news>
+	</url>
+</urlset>

@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <link rel="icon" type="image/x-icon" href="~/content/static/favicon-zaczytani.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/js/site.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SKH03V232Y"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SKH03V232Y');
+    </script>
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "name": "Zaczytani",
+        "alternateName": "Zaczytani w codzienności",
+        "url": "http://zaczytani.com.pl/",
+        "logo": "http://zaczytani.com.pl/content/static/zaczytani.png",
+        "sameAs": [
+        "https://www.facebook.com/zaczytaniwcodziennosci",
+        "https://www.instagram.com/za.czytani/"
+        ]
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org/",
+        "@@type": "WebSite",
+        "name": "Zaczytani",
+        "url": "https://zaczytani.com.pl/",
+        "potentialAction": {
+        "@@type": "SearchAction",
+        "target": "https://zaczytani.com.pl/?pageNumber=1&category=&search={search_term_string}",
+        "query-input": "required name=search_term_string"
+        }
+        }
+    </script>
+    <environment include="Development">
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
+    <environment include="Production">
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+
+        <a href="https://zaczytani.com.pl/" class="active"><img src="~/content/static/zaczytani.png" height="50" /><i aria-hidden="true"></i></a>
+        <a asp-controller="Home" asp-action="Index" asp-route-category="Bestseller" class="specnav">Polecane bestsellery</a>
+        <a asp-controller="Home" asp-action="Index" asp-route-category="Biografie" class="specnav">Polecane biografie</a> 
+        <a href="https://zaczytani.com.pl/Home/Onas" class="specnav">O zaczytanych</a>
+        <a href="https://zaczytani.com.pl/Home/Redakcja" class="specnav">Redakcja</a>
+        <a href="javascript:void(0);" class="icon" onclick="menuFunction()">
+            <i class="fa fa-bars" style=" font-size:24px;text-align:center;padding:15px"></i>
+        </a>
+        <!--           <a class="logo" href="http://zaczytani.com.pl/"><img src="~/content/static/zaczytani.png" height="50" /></a>
+         <a asp-controller="Home" asp-action="Index" asp-route-category="Reviews">Recenzje</a>
+         <a asp-controller="Home" asp-action="Index" asp-route-category="Rankings">Rankingi</a>
+         <a class="logo" href="http://zaczytani.com.pl/">Czytniki</a>
+         <!--    if (User.Identity.IsAuthenticated)
+    {
+    if (User.IsInRole("Admin"))
+    {
+    <a asp-controller="Panel" asp-action="Index">Admin Panel</a>
+    }
+    <a asp-controller="Auth" asp-action="Logout">Logout</a>
+    }
+    else
+    {
+    <a asp-controller="Auth" asp-action="Login">Sign In</a>
+    }
+    -->
+
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+    @RenderSection("scripts", false)
+</body>
+<footer>
+    <div class="stopka">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 item text" style="padding-bottom:15px;">
+                    <h3>Zaczytani</h3>
+                    <p>
+                        Strona stanowi projekt pracy inżynierskiej.
+                        <br />
+                        Odwiedź social media Zaczytanych:
+                        <br />
+                        <a href="https://www.facebook.com/zaczytaniwcodziennosci"><i class="icon ion-social-facebook" style=" font-size:24px; padding-right:10px;"></i></a>
+                        <a href="https://www.instagram.com/za.czytani"><i class="icon ion-social-instagram" style=" font-size:24px;"></i></a>
+                    </p>
+                </div>
+
+                <div class="col-sm-6 col-md-3 item" style="padding-bottom:15px;">
+                    <h3>Kategorie</h3>
+                    <ul class="punktacja-stopka">
+                        <li>
+                            <a asp-controller="Home" asp-action="Index" asp-route-category="Bestseller">Polecane Bestsellery</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="Index" asp-route-category="biography">Polecane biografie</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 col-md-3 item" style="padding-bottom:15px;">
+                    <h3>Poznajmy się lepiej</h3>
+                    <ul class="punktacja-stopka">
+                        <li><a href="https://zaczytani.com.pl/Home/Onas">O zaczytanych</a></li>
+                        <li><a href="https://zaczytani.com.pl/Home/Redakcja">Redakcja</a></li>
+                        <li><a href="https://zaczytani.com.pl/Home/Kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+            <p class="copyright">Projekt do pracy inżynierskiej © 2022</p>
+        </div>
+    </div>
+</footer>
+
+
+
+</html>

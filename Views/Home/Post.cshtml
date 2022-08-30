@@ -1,0 +1,170 @@
+﻿@model Post
+
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.Description = Model.Description;
+    ViewBag.Keywords = $"{Model.Tags?.Replace(",", "")} {Model.Category}";
+    var base_path = Context.Request.PathBase;
+}
+
+@*
+    <h2>@Model.Title</h2>
+    @if (!String.IsNullOrEmpty(Model.Image))
+    {
+        var image_path = $"/Image/{Model.Image}";
+        <img src="@image_path" width="500"/>
+    }
+    <p>@Model.Body</p>
+*@
+<div class="container">
+    <div class="post no-shadow">
+        @if (!String.IsNullOrEmpty(Model.Image))
+        {
+            var image_path = $"{base_path}/Image/{Model.Image}";
+            <img src="@image_path" alt="@Model.Title" class="fotunia" />
+            <div class="article_top">
+                <span class="path"><a href="https://zaczytani.com.pl" class="path-url">Zaczytani</a> >> <a asp-controller="Home" asp-action="Index" asp-route-category="@Model.Category" class="path-url">@Model.Category.ToString()</a> >> @Model.Title.ToString()</span>
+                <br /> 
+                <H1 class="title">@Model.Title</H1>
+                <br />
+                <span class="article_published">Opublikowano:  @Model.Created.ToString("dd/MM/yyyy")</span>
+                <p class="article_author">Autor: <a href="https://zaczytani.com.pl/Home/Redakcja" class="path-url">Bartłomiej Głowacki</a></p>
+                <br />
+            </div>
+            }
+        </div>
+    <div class="post-body">
+        <p>@Model.Description</p>
+        @Html.Raw(Model.Body)
+        <hr />
+        <div class="author">
+
+            <div class="author-info">
+                <div>
+                    <img src="~/content/static/miniaturka-bartlomiej-glowacki.jpg" alt="Redaktor Bartłomiej Głowacki" height="80" class="author-mini" />
+                </div>
+                <div>
+                    <a href="https://zaczytani.com.pl/Home/Redakcja"><h4 class="author-name">Bartłomiej Głowacki</h4></a>
+                    <p class="author-opis">
+                        Uwielbiam kawę i dobre książki, a zaczytanych tworzę właśnie z pasji do nich. Uwielbiam odkrywać ciekawe hisotrię i czerpać z nich inspirację do codziennego życia.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="comment-section">
+            <h4>Komentarze o: @Model.Title</h4>
+            <br />
+            <h5>Napisz Twój komentarz</h5>
+            @{
+                await Html.RenderPartialAsync("_MainComment", new CommentViewModel { PostId = Model.Id, MainCommentId = 0 });
+            }
+
+
+            @foreach (var c in Model.MainComments)
+            {
+                <hr />
+                <br /><br /><h5>Dołącz do dyskusji</h5>
+                <p>
+                    <strong>@c.Name </strong>     @c.Created.ToString("MM/dd/yyyy hh:mm") <br />
+                    @c.Message <br />
+                </p>
+                <div style="margin-left: 5rem;">
+
+
+                    @foreach (var sc in c.SubComments)
+                    {
+                        <p>
+                            <strong>@sc.Name </strong>     @sc.Created.ToString("MM/dd/yyyy hh:mm") <br />
+                            @sc.Message <br />
+                        </p>
+                    }
+                    @{
+                        await Html.RenderPartialAsync("_MainComment", new CommentViewModel { PostId = Model.Id, MainCommentId = c.Id });
+                    }
+                    <br />
+
+                </div>
+            }
+        </div>
+    </div>
+        </div>
+
+<script type="application/ld+json">
+    {
+    "@@context": "https://schema.org/",
+    "@@type": "Person",
+    "name": "Bartlomiej Glowacki",
+    "url": "https://zaczytani.com.pl/Home/Redakcja",
+    "image": "https://zaczytani.com.pl/content/static/miniaturka-bartlomiej-glowacki.jpg",
+    "sameAs": "https://www.instagram.com/accounts/login/?next=/bartlomiej_glowacki",
+    "jobTitle": "Redaktor",
+    "worksFor": {
+    "@@type": "Organization",
+    "name": "Zaczytani"
+    }
+    }
+
+    {
+    "@@context": "https://schema.org/",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [{
+    "@@type": "ListItem",
+    "position": 1,
+    "name": "Strona główna",
+    "item": "https://zaczytani.com.pl/"
+    },{
+    "@@type": "ListItem",
+    "position": 2,
+    "name": "@Model.Title",
+    "item": "https://zaczytani.com.pl/Home/Post/@Model.Id"
+    }]
+    }
+</script>
+
+<script type="application/ld+json">
+    {
+    "@@context": "https://schema.org",
+    "@@type": "Article",
+    "mainEntityOfPage": {
+    "@@type": "WebPage",
+    "@@id": "https://zaczytani.com.pl/Home/Post/@Model.Id"
+    },
+    "headline": "@Model.Title",
+    "description": "@Model.Description",
+    "image": "https://zaczytani.com.pl/Image/@Model.Image",
+    "author": {
+    "@@type": "Person",
+    "name": "Bartłomiej Głowacki",
+    "url": "https://zaczytani.com.pl/Home/Redakcja"
+    },
+    "publisher": {
+    "@@type": "Organization",
+    "name": "Zaczytani",
+    "logo": {
+    "@@type": "ImageObject",
+    "url": "https://zaczytani.com.pl/content/static/zaczytani.png"
+    }
+    },
+    "datePublished": "@Model.Created.ToString("dd/MM/yyyy")",
+    "dateModified": "@Model.Created.ToString("dd/MM/yyyy")"
+    }
+</script>
+
+<script type="application/ld+json">
+    {
+    "@@context": "https://schema.org/",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [{
+    "@@type": "ListItem",
+    "position": 1,
+    "name": "Strona główna zaczytani.com.pl",
+    "item": "https://zaczytani.com.pl/"
+    },{
+    "@@type": "ListItem",
+    "position": 2,
+    "name": "@Model.Title",
+    "item": "https://zaczytani.com.pl/Home/Post/@Model.Id"
+    }]
+    }
+</script>

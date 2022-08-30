@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Kontakt z redakcją zaczytanych";
+    ViewBag.Description = "Skontaktuj się z redakcją zaczytanych - podziel się opinią lub zaproponuj kolejną książkę.";
+    ViewBag.Keywords = "Blog książki polecane kryminały biografie";
+}
+
+<div class="container">
+    <div class="special-body">
+        <span class="path"><a href="https://zaczytani.com.pl" class="path-url">Zaczytani</a> >> Kontakt</span>
+        <h1>@ViewBag.Title</h1>
+        <p>
+            Masz pytania lub chcesz podzielić się propozycją ksiązki do recenzji? Napisz wiadomość.
+            <br /><br />
+            Kontakt do redakcji:
+            <br />
+            E-mail: <a href="mailto:zaczytaniwcodziennosci@gmail.com">zaczytaniwcodziennosci@gmail.com</a>
+        </p>
+    </div>
+
+</div>
+
+<script type="application/ld+json">
+    {
+    "@@context": "https://schema.org/",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [{
+    "@@type": "ListItem",
+    "position": 1,
+    "name": "Strona główna",
+    "item": "https://zaczytani.com.pl/"
+    },{
+    "@@type": "ListItem",
+    "position": 2,
+    "name": "Kontakt",
+    "item": "https://zaczytani.com.pl/Home/Kontakt"
+    }]
+    }
+
+
+    {
+    "@@context": "https://schema.org/",
+    "@@type": "BreadcrumbList",
+    "itemListElement": [{
+    "@@type": "ListItem",
+    "position": 1,
+    "name": "Strona główna zaczytani.com.pl",
+    "item": "https://zaczytani.com.pl/"
+    },{
+    "@@type": "ListItem",
+    "position": 2,
+    "name": "@ViewBag.Title",
+    "item": "https://zaczytani.com.pl/Home/Kontakt"
+    }]
+    }
+</script>
